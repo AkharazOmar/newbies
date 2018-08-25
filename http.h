@@ -20,6 +20,7 @@ public:
     void checkEncrypted(QNetworkReply *reply);
 
 private:
+    int a, b = 0;
     std::unique_ptr<QNetworkAccessManager> nam;
 };
 

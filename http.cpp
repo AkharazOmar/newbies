@@ -1,5 +1,5 @@
 #include "http.h"
-
+#include <cmath>
 #include <iostream>
 
 #include <QTextDocument>
@@ -61,7 +61,15 @@ void Http::onFinished(QNetworkReply * reply)
         qDebug() << textDo.toPlainText();
         if (reply->url().toString() == "https://www.newbiecontest.org/epreuves/prog/prog1.php") {
             sendRequest(QUrl("https://www.newbiecontest.org/epreuves/prog/verifpr1.php?solution=" + textDo.toPlainText().split(" ").last()));
-        } else {
+        } else if (reply->url().toString() == "https://www.newbiecontest.org/epreuves/prog/prog3_1.php") {
+            a = textDo.toPlainText().split(" ").last().toInt();
+            sendRequest(QUrl("https://www.newbiecontest.org/epreuves/prog/prog3_2.php"));
+        } else if (reply->url().toString() == "https://www.newbiecontest.org/epreuves/prog/prog3_2.php") {
+            b = textDo.toPlainText().split(" ").last().toInt();
+            int result = sqrt(a)*b;
+            qDebug() << "FIXME value computed: " << result;
+            sendRequest(QUrl("https://www.newbiecontest.org/epreuves/prog/verifpr3.php?solution=" + QString::number(result)));
+        }else {
             QCoreApplication::quit();
         }
     } else {
