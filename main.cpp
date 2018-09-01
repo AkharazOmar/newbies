@@ -11,9 +11,13 @@ int main(int argc, char *argv[])
     Http ht(nullptr);
 
     // Prog1
-    // ht.sendRequest(QUrl("https://www.newbiecontest.org/epreuves/prog/prog1.php"));
+//    ht.sendGetRequest(QUrl("https://www.newbiecontest.org/epreuves/prog/prog1.php"));
 
     // Prog3
-    ht.sendRequest(QUrl("https://www.newbiecontest.org/epreuves/prog/prog3_1.php"));
+    // ht.sendGetRequest(QUrl("https://www.newbiecontest.org/epreuves/prog/prog3_1.php"));
+
+    // Root-me Captcha
+    ht.sendGetRequest(QUrl("http://challenge01.root-me.org/programmation/ch8/"));
+
     return a.exec();
 }

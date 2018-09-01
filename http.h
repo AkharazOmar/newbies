@@ -13,7 +13,9 @@ class Http final: public QObject
 public:
     explicit Http(QObject *parent=nullptr);
 
-    void sendRequest(QUrl &&request);
+    void sendGetRequest(QUrl &&request);
+
+    void sendPostRequest(QUrl &&request, const QUrlQuery &postData);
 
     void onFinished(QNetworkReply *reply);
 
